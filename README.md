@@ -1,66 +1,19 @@
-# Análise de Sentimentos no IMDb com Transformers
+# Análise de Sentimentos no IMDb com DistilBERT (Transformers)
 
-Projeto de classificação de sentimentos em críticas de filmes do IMDb usando modelos Transformer (DistilBERT).
+Projeto acadêmico de classificação de sentimentos em reviews do IMDb usando **DistilBERT fine-tunado**, com análise de **robustez**, **interpretabilidade (SHAP)** e **ataques adversariais**.
 
-## 👥 Autores
-- **Sérgio Barreto** (slbp)
-- **Isaac Ferreira Silva** (ifs5)
+## Autores
+- Sérgio Barreto
+- Isaac Ferreira Silva
 
-## 📝 Descrição
+## Arquivos principais
+- 📓 Notebook: `IMDB_Sentiment_Notbook_final.ipynb`
+- 📄 Relatório: `final_report.pdf`
 
-Este projeto implementa um classificador de sentimentos para reviews de filmes do dataset IMDb, utilizando o modelo **DistilBERT** com fine-tuning. O objetivo é classificar críticas como positivas (1) ou negativas (0).
+## Resultados (resumo)
 
-## 🎯 Resultados
+- **Teste padrão (baseline):** Acc **0.9172** | F1 **0.9175**
+- **Robustez (subset):** **Typos (5%)** foi o pior cenário (queda de acc e aumento de *flip rate*)
+- **Ataques adversariais (subset N=300):** injeção de sentimento oposto reduziu a acurácia e gerou *flips*
 
-- **Acurácia Baseline**: 91,72%
-- **F1-Score**: 91,75%
-- Modelo robusto com testes de adversários e interpretabilidade via SHAP
-
-## 🔬 Características do Projeto
-
-### ✅ Implementado
-- **Baseline**: Treinamento com DistilBERT
-- **Otimização**: Busca de hiperparâmetros com Optuna
-- **Testes de Robustez**: Typos, caixa alta, ruído/spam
-- **Interpretabilidade**: Análise SHAP para explicação de predições
-- **Ataques Adversários**: Testes de vulnerabilidade
-
-### 📊 Estrutura
-```
-.
-├── IMDB_Sentiment_Notbook.ipynb  # Notebook principal
-├── imdb_model/                    # Modelo será salvo aqui após treino
-├── .gitignore
-└── README.md
-```
-
-> **Nota:** O modelo treinado não está incluído no repositório (255 MB). Execute o notebook para treinar e gerar o modelo localmente na pasta `./imdb_model/`.
-
-## 🚀 Como Usar
-
-### Requisitos
-```bash
-pip install datasets scikit-learn torch transformers optuna shap
-```
-
-### Executar
-1. Abra o notebook `IMDB_Sentiment_Notbook.ipynb`
-2. Execute as células sequencialmente
-3. O modelo será salvo em `./imdb_model/`
-
-## 📈 Destaques
-
-### Robustez
-- **Typos (5%)**: -6,1% de acurácia
-- **Caixa Alta**: 0% de impacto
-- **Ruído/Spam**: +0,4% (robusto)
-
-### Ataques Adversários
-- **Injeção de Sentimento Oposto**: 10,4% flip rate
-- **Trigger Neutro**: 4,8% flip rate
-
-## 📄 Licença
-
-Projeto acadêmico desenvolvido para fins educacionais.
-
-
+**Detalhes completos, gráficos e exemplos:** `final_report.pdf`.
